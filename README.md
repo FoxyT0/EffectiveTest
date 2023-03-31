@@ -7,10 +7,10 @@ Next step, write python manage.py into CLI being in project folder.
 
 ## Main endpoints
 
-1. GET / -- home endpoint to make sure the app is running.
-2. GET /forms -- endpoint for view all forms available in the database.
-3. GET /forms/<int:form_id> -- endpoint for view form with specific form_id.
-4. POST /form/create -- endpoint for adding new forms.
+1. GET '/' – home endpoint to make sure the app is running.
+2. GET '/forms' – endpoint for view all forms available in the database.
+3. GET '/forms/<int:form_id>' – endpoint for view form with specific form_id.
+4. POST '/form/create' – endpoint for adding new forms.
 
 ## View of forms data
 
