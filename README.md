@@ -16,6 +16,8 @@ Next step, write python manage.py into CLI being in project folder.
 
 Forms are JSON-like.
 Example:
+
+```json
 {
 "\_id": "222",
 "1":{
@@ -33,6 +35,7 @@ Example:
 }
 }
 }
+```
 
 Here \_id is id of form. 1 and 2 is number of questions. Type is the answer type(text/radio/check_box). Field answer can be string or JSON-like
 when type of answer is not text.
