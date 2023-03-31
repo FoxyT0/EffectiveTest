@@ -19,7 +19,7 @@ Example:
 
 ```json
 {
-"\_id": "222",
+"_id": "222",
 "1":{
 "type":"text",
 "question":"Whats up?",
