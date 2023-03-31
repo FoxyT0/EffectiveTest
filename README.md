@@ -2,7 +2,12 @@
 
 ## Get starting
 
-First, install all dependencies from the requirements.txt with the command install -r requirements.txt'.
+First, install all dependencies from the requirements.txt with the command
+
+```console
+install -r requirements.txt'.
+```
+
 Next step, write python manage.py into CLI being in project folder.
 
 ## Main endpoints
