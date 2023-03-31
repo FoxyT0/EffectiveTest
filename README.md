@@ -24,21 +24,21 @@ Example:
 
 ```json
 {
-"_id": "222",
-"1":{
-"type":"text",
-"question":"Whats up?",
-"answer":"All is good!"
-}
-"2":{
-"type":"radio",
-"question":"How are you?",
-"answer":{
-"1":"OK",
-"2":"So-so",
-"3":"Bad :("
-}
-}
+  "_id": "222",
+  "1":{
+    "type":"text",
+    "question":"Whats up?",
+    "answer":"All is good!"
+  }
+  "2":{
+    "type":"radio",
+    "question":"How are you?",
+    "answer":{
+      "1":"OK",
+      "2":"So-so",
+      "3":"Bad :("
+    }
+  }
 }
 ```
 
