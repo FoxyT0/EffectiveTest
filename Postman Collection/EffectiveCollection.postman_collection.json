@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "185970a8-cfb2-444a-9aab-cb2fa8d5bb42",
+		"name": "EffectiveCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26889540"
+	},
+	"item": [
+		{
+			"name": "Get all forms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Body is not empty\"] = responseBody.length!=0"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forms",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one form with id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Verify Json values\", function () { ",
+							"    let responseData = pm.response.json();",
+							"    pm.expect(responseData._id).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forms/0",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Good delet form request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forms/delete/0",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"delete",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Good create form request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 0,\n     \"1\": \n    {\n        \"type\": \"text\",\n        \"question\": \"222\",\n        \"answer\": \"111\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/forms/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Good edit form request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 0,\n     \"1\": \n    {\n        \"type\": \"text\",\n        \"question\": \"111\",\n        \"answer\": \"222\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/forms/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad get one form request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forms/999",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create id already in use",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 0,\n    \"1\": \n    {\n        \"type\": \"text\",\n        \"question\": \"222\",\n        \"answer\": \"111\"\n    },\n    \"2\": \n    {\n        \"type\": \"text\",\n        \"question\": \"Qwerty\",\n        \"answer\": \"Lol\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/forms/create",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad edit request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 3434,\n    \"1\": \n    {\n        \"type\": \"text\",\n        \"question\": \"222\",\n        \"answer\": \"111\"\n    },\n    \"2\": \n    {\n        \"type\": \"text\",\n        \"question\": \"Qwerty\",\n        \"answer\": \"Lol\"\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/forms/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad delete form request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forms/delete/999",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forms",
+						"delete",
+						"999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
