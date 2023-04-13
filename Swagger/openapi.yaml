@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Forms API
+  version: 0.0.1
+  
+servers:
+  - url: http://localhost:5000
+    description: Dev server
+    
+paths:
+  
+  /forms:
+    get:
+      tags: 
+        - forms
+      summary: Метод получения всех форм
+      responses:
+        '200':
+          description: Успешное получение массива форм
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forms"
+        '204':
+          description: В базе данных нет ни одной формы
+  
+  /forms/<int:form_id>:
+    get:
+      tags: 
+        - forms
+      summary: Метод получения формы по id
+      responses:
+        '200':
+          description: Успешное получение формы
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Form"
+        '409':
+          description: В базе данных нет формы под заданным id
+  
+  /forms/create:
+    post:
+      tags: 
+        - forms
+      summary: Метод создания новой формы
+      responses:
+        '200':
+          description: Успешное создание формы
+        '409':
+          description: Заданое id формы занято
+  
+  /forms/edit:
+    post:
+      tags: 
+        - forms
+      summary: Метод для замены или изменения уже существующей формы
+      responses:
+        '200':
+          description: Успешное редактирование формы
+        '409':
+          description: В базе данных нет формы под таким id
+  
+  /forms/delete/<int:form_id>:
+    post:
+      tags: 
+        - forms
+      summary: Метод удаления формы по id
+      responses:
+        '200':
+          description: Успешное удаление формы
+        '409':
+          description: Заданое id формы не найдено
+
+
+
+components:
+  schemas:
+    Task:
+      type: object
+      required:
+        - type
+        - question
+        - answer
+      properties:
+        type:
+          type: string
+          enum:
+            - text
+            - radio
+            - check_box
+          description: Тип ответа
+          example: text
+        question:
+          type: string
+          example: How are You
+        answer:
+          type: string
+          enum:
+          - Answer one
+          - Answer two
+          - Answer three
+  
+    Form:
+      type: object
+      required:  
+        - _id
+      properties:
+        _id:
+          type: integer
+          example: 0
+        Tasks:
+          type: array
+          items:
+            $ref: "#/components/schemas/Task"
+          
+    Forms:
+      type: array
+      items: 
+        $ref: "#/components/schemas/Form"
